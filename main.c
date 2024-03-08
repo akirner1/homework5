@@ -81,6 +81,18 @@ int main(int argc, char *argv[]) {
 
 	// initialize my matrices
 	mmm_init();
+	char* modeName;
+	if(!mode){
+		modeName = "Parallel";
+	}else{
+		modeName = "Sequential";
+	}
+	printf("========\nmode: %s\n", modeName);
+	if(!mode){
+		printf("thread count: %d\n", num_threads);
+	}
+	printf("size: %d\n========\n", size);
+
 
 	double clockstart, clockend;
 	int numRuns = 3;
