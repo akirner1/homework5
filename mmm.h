@@ -13,4 +13,11 @@ void mmm_seq();
 void* mmm_par(void *);
 double mmm_verify();
 
+typedef struct mmmInputs {
+	int startIndex;
+	int endIndex;
+}mmmInputs;
+
+void printMatrix(double**);
+void* threadTest(void*);
 #endif /* MMM_H_ */
