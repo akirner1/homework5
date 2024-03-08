@@ -105,7 +105,8 @@ int main(int argc, char *argv[]) {
 	}
 
 	clockend = rtclock(); // stop the clock
-	printf("Sequential Time (avg of %d runs): %.6f sec\n", numRuns, (clockend - clockstart)/numRuns);
+	double seq_time = (clockend - clockstart)/numRuns;
+	printf("Sequential Time (avg of %d runs): %.6f sec\n", numRuns, seq_time);
 
 
 	if(!mode){
@@ -132,10 +133,11 @@ int main(int argc, char *argv[]) {
 			free(threads);
 		}
 		clockend = rtclock();
-		printf("Parallel Time (avg of %d runs): %.6f sec\nVerifying...", numRuns, (clockend-clockstart)/numRuns);
+		double par_time = (clockend-clockstart)/numRuns;
+		printf("Parallel Time (avg of %d runs): %.6f sec\nVerifying...", numRuns, par_time);
+		printf("Speedup: %.6f\n", seq_time/par_time);
 		printf("largest error between parallel and sequential matrix: %f\n", mmm_verify());
-		//printMatrix(SEQ_MATRIX);
-		//printMatrix(PAR_MATRIX);
+
 	}
 
 
